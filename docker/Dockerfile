@@ -1,7 +1,4 @@
-FROM ubuntu:latest
-MAINTAINER trg78
-RUN apt update
-RUN apt -y install nginx && apt -y install python
-ADD ./nginx.conf /etc/nginx/
-EXPOSE 80
-CMD ["nginx", "tail -f /dev/null"]
+FROM alpine
+RUN apk add --no-cache curl wget busybox-extras netcat-openbsd python py-pip && \
+    pip install awscli
+CMD tail -f /dev/null
