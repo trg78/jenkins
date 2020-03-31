@@ -4,4 +4,4 @@ RUN apt update
 RUN apt -y install nginx && apt -y install python
 ADD ./nginx.conf /etc/nginx/
 EXPOSE 80
-CMD [nginx]
+CMD ["nginx", "tail -f /dev/null"]
