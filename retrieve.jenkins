@@ -21,5 +21,11 @@ pipeline {
                 sh 'ssh root@jenkins-agent1 \'uptime\''
             }
         }
+         stage("Three") {
+            steps {
+                sh 'ssh root@jenkins-agent1 \'lsb_release -a\''
+            }
+        }
+        
     }
 }
