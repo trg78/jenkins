@@ -1,26 +1,29 @@
 #!groovy
-// Disable other builds
+//Disableotherbuilds
 properties([disableConcurrentBuilds()])
 
 
-pipeline {
-    agent { 
-        label 'master'
-        }
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '20'))
-        timestamps()
-    }
-    stages {
-        stage("One") {
-            steps {
-                sh 'ssh root@jenkins-agent1 \'hostname\''
-            }
-        }
-        stage("Two") {
-            steps {
-                sh 'ssh root@jenkins-agent1 \'uptime\''
-            }
-        }
-    }
+pipeline{
+agent{
+label'master'
+}
+
+options{
+buildDiscarder(logRotator(numToKeepStr:'5',artifactNumToKeepStr:'20'))
+timestamps()
+}
+
+stages{
+
+stage("One"){
+steps{
+sh'sshroot@jenkins-agent1\'hostname\''
+}
+}
+stage("Two"){
+steps{
+sh'sshroot@jenkins-agent1\'uptime\''
+}
+}
+}
 }
